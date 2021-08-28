@@ -7,7 +7,7 @@ const getLocalStorage = () => {
   if (favorites) {
     return JSON.parse(localStorage.getItem('favorites'));
   } else {
-    return [];
+    return { launches: [], launch_pads: [] };
   }
 };
 
@@ -20,10 +20,17 @@ const FavoritesContext = React.createContext();
 export const FavoritesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const addToFavorites = (item) => {
+  const addToFavorites = (id, category) => {
     dispatch({
       type: ADD_TO_FAVORITES,
-      payload: { item },
+      payload: { id, category },
+    });
+  };
+
+  const removeFavorite = (id, category) => {
+    dispatch({
+      type: REMOVE_FAVORITE_ITEM,
+      payload: { id, category },
     });
   };
 
@@ -36,6 +43,7 @@ export const FavoritesProvider = ({ children }) => {
       value={{
         ...state,
         addToFavorites,
+        removeFavorite,
       }}
     >
       {children}
