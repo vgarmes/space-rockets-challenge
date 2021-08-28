@@ -20,12 +20,16 @@ import {
   AspectRatioBox,
   StatGroup,
   Tooltip,
+  Button,
+  ButtonGroup,
 } from '@chakra-ui/core';
+import { FaStar, FaRegStar, FaTrash } from 'react-icons/fa';
 
 import { useSpaceX } from '../utils/use-space-x';
 import { formatDateTime } from '../utils/format-date';
 import Error from './error';
 import Breadcrumbs from './breadcrumbs';
+import { useFavoritesContext } from '../context/favorites_context';
 
 export default function Launch() {
   let { launchId } = useParams();
@@ -50,7 +54,9 @@ export default function Launch() {
         ]}
       />
       <Header launch={launch} />
+
       <Box m={[3, 6]}>
+        <Buttons launch={launch} />
         <TimeAndLocation launch={launch} />
         <RocketInfo launch={launch} />
         <Text color="gray.700" fontSize={['md', null, 'lg']} my="8">
@@ -114,9 +120,48 @@ function Header({ launch }) {
   );
 }
 
+function Buttons({ launch }) {
+  const {
+    favorites: { launches },
+    addToFavorites,
+    removeFavorite,
+  } = useFavoritesContext();
+  const isFavorite = launches.find(
+    (launch_id) => launch_id === launch.flight_number
+  );
+  return (
+    <Stack spacing="3" justifyContent={['center', 'flex-end']} isInline>
+      {isFavorite ? (
+        <Button
+          variantColor="red"
+          leftIcon={FaStar}
+          onClick={() => removeFavorite(launch.flight_number, 'launch')}
+        >
+          Favorite
+        </Button>
+      ) : (
+        <Button
+          variant="outline"
+          variantColor="red"
+          leftIcon={FaRegStar}
+          onClick={() => addToFavorites(launch.flight_number, 'launch')}
+        >
+          Add to favorites
+        </Button>
+      )}
+    </Stack>
+  );
+}
+
 function TimeAndLocation({ launch }) {
   return (
-    <SimpleGrid columns={[1, 1, 2]} borderWidth="1px" p="4" borderRadius="md">
+    <SimpleGrid
+      columns={[1, 1, 2]}
+      borderWidth="1px"
+      mt="4"
+      p="4"
+      borderRadius="md"
+    >
       <Stat>
         <StatLabel display="flex">
           <Box as={Watch} width="1em" />{' '}
