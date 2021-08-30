@@ -7,7 +7,7 @@ import Launch from './launch';
 import Home from './home';
 import LaunchPads from './launch-pads';
 import LaunchPad from './launch-pad';
-import Menu from './menu';
+import DrawerMenu from './menu';
 
 export default function App() {
   return (
@@ -48,7 +48,7 @@ function NavBar() {
       <Button ref={drawerBtnRef} variant="outline" onClick={onOpen}>
         Menu
       </Button>
-      <Menu isOpen={isOpen} onClose={onClose} btnRef={drawerBtnRef} />
+      <DrawerMenu isOpen={isOpen} onClose={onClose} btnRef={drawerBtnRef} />
     </Flex>
   );
 }
