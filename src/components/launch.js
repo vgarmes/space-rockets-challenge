@@ -126,9 +126,7 @@ function Buttons({ launch }) {
     addToFavorites,
     removeFavorite,
   } = useFavoritesContext();
-  const isFavorite = launches.find(
-    (launch_id) => launch_id === launch.flight_number
-  );
+  const isFavorite = launches.find(({ id }) => id === launch.flight_number);
   return (
     <Stack spacing="3" justifyContent={['center', 'flex-end']} isInline>
       {isFavorite ? (
@@ -144,7 +142,9 @@ function Buttons({ launch }) {
           variant="outline"
           variantColor="red"
           leftIcon={FaRegStar}
-          onClick={() => addToFavorites(launch.flight_number, 'launch')}
+          onClick={() =>
+            addToFavorites(launch.flight_number, launch.mission_name, 'launch')
+          }
         >
           Add to favorites
         </Button>
