@@ -20,10 +20,10 @@ const FavoritesContext = React.createContext();
 export const FavoritesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const addToFavorites = (id, category) => {
+  const addToFavorites = (id, name, category) => {
     dispatch({
       type: ADD_TO_FAVORITES,
-      payload: { id, category },
+      payload: { id, name, category },
     });
   };
 

@@ -2,15 +2,16 @@ import { ADD_TO_FAVORITES, REMOVE_FAVORITE_ITEM } from '../constants/actions';
 
 const favorites_reducer = (state, action) => {
   if (action.type === ADD_TO_FAVORITES) {
-    const { id, category } = action.payload;
+    const { id, name, category } = action.payload;
     let tempFavorites = { ...state.favorites };
+    const newItem = { id, name };
 
     if (category === 'launch') {
-      tempFavorites.launches = [...tempFavorites.launches, id];
+      tempFavorites.launches = [...tempFavorites.launches, newItem];
     }
 
     if (category === 'launch_pad') {
-      tempFavorites.launch_pads = [...tempFavorites.launch_pads, id];
+      tempFavorites.launch_pads = [...tempFavorites.launch_pads, newItem];
     }
 
     return { ...state, favorites: tempFavorites };
@@ -22,13 +23,13 @@ const favorites_reducer = (state, action) => {
 
     if (category === 'launch') {
       tempFavorites.launches = tempFavorites.launches.filter(
-        (launch_id) => launch_id !== id
+        ({ id: launch_id }) => launch_id !== id
       );
     }
 
     if (category === 'launch_pad') {
       tempFavorites.launch_pads = tempFavorites.launch_pads.filter(
-        (launch_pad_id) => launch_pad_id !== id
+        ({ id: launchpad_id }) => launchpad_id !== id
       );
     }
 
