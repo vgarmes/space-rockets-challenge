@@ -7,6 +7,7 @@ import {
   Text,
   Flex,
   IconButton,
+  Button,
 } from '@chakra-ui/core';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { format as timeAgo } from 'timeago.js';
@@ -65,14 +66,16 @@ export default function Launches() {
 }
 
 export function LaunchItem({ launch, isFavorite }) {
-  const { addToFavorites, removeFavorite } = useFavoritesContext();
+  const { addFavoriteLaunch, removeFavoriteLaunch } = useFavoritesContext();
   return (
-    <Box boxShadow="md" borderWidth="1px" rounded="lg" overflow="hidden">
-      <Box
-        as={Link}
-        to={`/launches/${launch.flight_number.toString()}`}
-        position="relative"
-      >
+    <Box
+      boxShadow="md"
+      borderWidth="1px"
+      rounded="lg"
+      overflow="hidden"
+      position="relative"
+    >
+      <Link to={`/launches/${launch.flight_number.toString()}`}>
         <Image
           src={
             launch.links.flickr_images[0]?.replace('_o.jpg', '_z.jpg') ??
@@ -94,7 +97,7 @@ export function LaunchItem({ launch, isFavorite }) {
           objectFit="contain"
           objectPosition="bottom"
         />
-      </Box>
+      </Link>
       <Box pt="2" px="6" d="flex" justifyContent="flex-end">
         <IconButton
           icon={isFavorite ? FaStar : FaRegStar}
@@ -106,12 +109,8 @@ export function LaunchItem({ launch, isFavorite }) {
           aria-label="add to favorites"
           onClick={() =>
             isFavorite
-              ? removeFavorite(launch.flight_number, 'launch')
-              : addToFavorites(
-                  launch.flight_number,
-                  launch.mission_name,
-                  'launch'
-                )
+              ? removeFavoriteLaunch(launch.flight_number)
+              : addFavoriteLaunch(launch.flight_number, launch.mission_name)
           }
         />
       </Box>

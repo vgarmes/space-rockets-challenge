@@ -1,6 +1,11 @@
 import React, { useEffect, useContext, useReducer } from 'react';
 import reducer from '../reducers/favorites_reducer';
-import { ADD_TO_FAVORITES, REMOVE_FAVORITE_ITEM } from '../constants/actions';
+import {
+  ADD_FAVORITE_LAUNCH,
+  REMOVE_FAVORITE_LAUNCH,
+  ADD_FAVORITE_LAUNCHPAD,
+  REMOVE_FAVORITE_LAUNCHPAD,
+} from '../constants/actions';
 
 const getLocalStorage = () => {
   let favorites = localStorage.getItem('favorites');
@@ -20,17 +25,31 @@ const FavoritesContext = React.createContext();
 export const FavoritesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const addToFavorites = (id, name, category) => {
+  const addFavoriteLaunch = (id, name) => {
     dispatch({
-      type: ADD_TO_FAVORITES,
-      payload: { id, name, category },
+      type: ADD_FAVORITE_LAUNCH,
+      payload: { id, name },
     });
   };
 
-  const removeFavorite = (id, category) => {
+  const removeFavoriteLaunch = (id) => {
     dispatch({
-      type: REMOVE_FAVORITE_ITEM,
-      payload: { id, category },
+      type: REMOVE_FAVORITE_LAUNCH,
+      payload: { id },
+    });
+  };
+
+  const addFavoriteLaunchPad = (id, name) => {
+    dispatch({
+      type: ADD_FAVORITE_LAUNCHPAD,
+      payload: { id, name },
+    });
+  };
+
+  const removeFavoriteLaunchPad = (id) => {
+    dispatch({
+      type: REMOVE_FAVORITE_LAUNCHPAD,
+      payload: { id },
     });
   };
 
@@ -42,8 +61,10 @@ export const FavoritesProvider = ({ children }) => {
     <FavoritesContext.Provider
       value={{
         ...state,
-        addToFavorites,
-        removeFavorite,
+        addFavoriteLaunch,
+        removeFavoriteLaunch,
+        addFavoriteLaunchPad,
+        removeFavoriteLaunchPad,
       }}
     >
       {children}

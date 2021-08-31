@@ -21,9 +21,8 @@ import {
   StatGroup,
   Tooltip,
   Button,
-  ButtonGroup,
 } from '@chakra-ui/core';
-import { FaStar, FaRegStar, FaTrash } from 'react-icons/fa';
+import { FaStar, FaRegStar } from 'react-icons/fa';
 
 import { useSpaceX } from '../utils/use-space-x';
 import { formatDateTime } from '../utils/format-date';
@@ -123,8 +122,8 @@ function Header({ launch }) {
 function Buttons({ launch }) {
   const {
     favorites: { launches },
-    addToFavorites,
-    removeFavorite,
+    addFavoriteLaunch,
+    removeFavoriteLaunch,
   } = useFavoritesContext();
   const isFavorite = launches.find(({ id }) => id === launch.flight_number);
   return (
@@ -133,7 +132,7 @@ function Buttons({ launch }) {
         <Button
           variantColor="red"
           leftIcon={FaStar}
-          onClick={() => removeFavorite(launch.flight_number, 'launch')}
+          onClick={() => removeFavoriteLaunch(launch.flight_number)}
         >
           Favorite
         </Button>
@@ -143,7 +142,7 @@ function Buttons({ launch }) {
           variantColor="red"
           leftIcon={FaRegStar}
           onClick={() =>
-            addToFavorites(launch.flight_number, launch.mission_name, 'launch')
+            addFavoriteLaunch(launch.flight_number, launch.mission_name)
           }
         >
           Add to favorites

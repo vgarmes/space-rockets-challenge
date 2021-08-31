@@ -1,37 +1,55 @@
-import { ADD_TO_FAVORITES, REMOVE_FAVORITE_ITEM } from '../constants/actions';
+import {
+  ADD_FAVORITE_LAUNCH,
+  REMOVE_FAVORITE_LAUNCH,
+  ADD_FAVORITE_LAUNCHPAD,
+  REMOVE_FAVORITE_LAUNCHPAD,
+} from '../constants/actions';
 
 const favorites_reducer = (state, action) => {
-  if (action.type === ADD_TO_FAVORITES) {
-    const { id, name, category } = action.payload;
-    let tempFavorites = { ...state.favorites };
-    const newItem = { id, name };
+  if (action.type === ADD_FAVORITE_LAUNCH) {
+    const { id, name } = action.payload;
 
-    if (category === 'launch') {
-      tempFavorites.launches = [...tempFavorites.launches, newItem];
-    }
-
-    if (category === 'launch_pad') {
-      tempFavorites.launch_pads = [...tempFavorites.launch_pads, newItem];
-    }
+    const tempFavorites = {
+      ...state.favorites,
+      launches: [...state.favorites.launches, { id, name }],
+    };
 
     return { ...state, favorites: tempFavorites };
   }
 
-  if (action.type === REMOVE_FAVORITE_ITEM) {
-    const { id, category } = action.payload;
-    let tempFavorites = { ...state.favorites };
+  if (action.type === REMOVE_FAVORITE_LAUNCH) {
+    const { id } = action.payload;
 
-    if (category === 'launch') {
-      tempFavorites.launches = tempFavorites.launches.filter(
+    const tempFavorites = {
+      ...state.favorites,
+      launches: state.favorites.launches.filter(
         ({ id: launch_id }) => launch_id !== id
-      );
-    }
+      ),
+    };
 
-    if (category === 'launch_pad') {
-      tempFavorites.launch_pads = tempFavorites.launch_pads.filter(
+    return { ...state, favorites: tempFavorites };
+  }
+
+  if (action.type === ADD_FAVORITE_LAUNCHPAD) {
+    const { id, name } = action.payload;
+
+    const tempFavorites = {
+      ...state.favorites,
+      launch_pads: [...state.favorites.launch_pads, { id, name }],
+    };
+
+    return { ...state, favorites: tempFavorites };
+  }
+
+  if (action.type === REMOVE_FAVORITE_LAUNCHPAD) {
+    const { id } = action.payload;
+
+    const tempFavorites = {
+      ...state.favorites,
+      launch_pads: state.favorites.launch_pads.filter(
         ({ id: launchpad_id }) => launchpad_id !== id
-      );
-    }
+      ),
+    };
 
     return { ...state, favorites: tempFavorites };
   }
