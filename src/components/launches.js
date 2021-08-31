@@ -7,7 +7,6 @@ import {
   Text,
   Flex,
   IconButton,
-  Button,
 } from '@chakra-ui/core';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { format as timeAgo } from 'timeago.js';
@@ -35,6 +34,8 @@ export default function Launches() {
 
   const {
     favorites: { launches },
+    addFavoriteLaunch,
+    removeFavoriteLaunch,
   } = useFavoritesContext();
 
   return (
@@ -52,6 +53,8 @@ export default function Launches() {
                 launch={launch}
                 key={launch.flight_number}
                 isFavorite={isFavorite(launches, launch.flight_number)}
+                addFavorite={addFavoriteLaunch}
+                removeFavorite={removeFavoriteLaunch}
               />
             ))}
       </SimpleGrid>
@@ -65,8 +68,12 @@ export default function Launches() {
   );
 }
 
-export function LaunchItem({ launch, isFavorite }) {
-  const { addFavoriteLaunch, removeFavoriteLaunch } = useFavoritesContext();
+export function LaunchItem({
+  launch,
+  isFavorite,
+  addFavorite,
+  removeFavorite,
+}) {
   return (
     <Box
       boxShadow="md"
@@ -109,8 +116,8 @@ export function LaunchItem({ launch, isFavorite }) {
           aria-label="add to favorites"
           onClick={() =>
             isFavorite
-              ? removeFavoriteLaunch(launch.flight_number)
-              : addFavoriteLaunch(launch.flight_number, launch.mission_name)
+              ? removeFavorite(launch.flight_number)
+              : addFavorite(launch.flight_number, launch.mission_name)
           }
         />
       </Box>
