@@ -34,6 +34,7 @@ const MenuLink = ({ id, name, pathRoot, currentPath }) => {
           fontWeight={`${isActive ? '700' : '400'}`}
           transition="all 0.2s"
           ml={`${isActive ? 1 : '0'}`}
+          isTruncated
         >
           {name}
         </Text>
