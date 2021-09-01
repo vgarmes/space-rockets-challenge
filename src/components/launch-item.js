@@ -1,79 +1,11 @@
 import React from 'react';
-import {
-  Badge,
-  Box,
-  Image,
-  SimpleGrid,
-  Text,
-  Flex,
-  IconButton,
-} from '@chakra-ui/core';
+import { Badge, Box, Image, Text, Flex, IconButton } from '@chakra-ui/core';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { format as timeAgo } from 'timeago.js';
 import { Link } from 'react-router-dom';
-
-import { useSpaceXPaginated } from '../utils/use-space-x';
 import { formatDate } from '../utils/format-date';
-import Error from './error';
-import Breadcrumbs from './breadcrumbs';
-import LoadMoreButton from './load-more-button';
-import { useFavoritesContext } from '../context/favorites_context';
-import { isFavorite } from '../utils';
 
-const PAGE_SIZE = 12;
-
-export default function Launches() {
-  const { data, error, isValidating, setSize, size } = useSpaceXPaginated(
-    '/launches/past',
-    {
-      limit: PAGE_SIZE,
-      order: 'desc',
-      sort: 'launch_date_utc',
-    }
-  );
-
-  const {
-    favorites: { launches },
-    addFavoriteLaunch,
-    removeFavoriteLaunch,
-  } = useFavoritesContext();
-
-  return (
-    <div>
-      <Breadcrumbs
-        items={[{ label: 'Home', to: '/' }, { label: 'Launches' }]}
-      />
-      <SimpleGrid m={[2, null, 6]} minChildWidth="350px" spacing="4">
-        {error && <Error />}
-        {data &&
-          data
-            .flat()
-            .map((launch) => (
-              <LaunchItem
-                launch={launch}
-                key={launch.flight_number}
-                isFavorite={isFavorite(launches, launch.flight_number)}
-                addFavorite={addFavoriteLaunch}
-                removeFavorite={removeFavoriteLaunch}
-              />
-            ))}
-      </SimpleGrid>
-      <LoadMoreButton
-        loadMore={() => setSize(size + 1)}
-        data={data}
-        pageSize={PAGE_SIZE}
-        isLoadingMore={isValidating}
-      />
-    </div>
-  );
-}
-
-export function LaunchItem({
-  launch,
-  isFavorite,
-  addFavorite,
-  removeFavorite,
-}) {
+const LaunchItem = ({ launch, isFavorite, addFavorite, removeFavorite }) => {
   return (
     <Box
       boxShadow="md"
@@ -164,4 +96,6 @@ export function LaunchItem({
       </Link>
     </Box>
   );
-}
+};
+
+export default LaunchItem;

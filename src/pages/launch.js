@@ -26,8 +26,7 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 
 import { useSpaceX } from '../utils/use-space-x';
 import { formatDateTime } from '../utils/format-date';
-import Error from './error';
-import Breadcrumbs from './breadcrumbs';
+import { Error, Breadcrumbs } from '../components';
 import { useFavoritesContext } from '../context/favorites_context';
 
 export default function Launch() {
