@@ -6,6 +6,7 @@ import {
   Error,
   LoadMoreButton,
   Filter,
+  Sort,
   LaunchItem,
 } from '../components';
 import { useFavoritesContext } from '../context/favorites_context';
@@ -35,7 +36,8 @@ export default function Launches() {
         items={[{ label: 'Home', to: '/' }, { label: 'Launches' }]}
       />
       <Filter />
-      <SimpleGrid m={[2, null, 6]} minChildWidth="350px" spacing="4">
+      <Sort />
+      <SimpleGrid my={[2, null, 6]} minChildWidth="350px" spacing="4">
         {error && <Error />}
         {data &&
           data

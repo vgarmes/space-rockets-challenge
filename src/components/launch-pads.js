@@ -31,7 +31,7 @@ export default function LaunchPads() {
       <Breadcrumbs
         items={[{ label: 'Home', to: '/' }, { label: 'Launch Pads' }]}
       />
-      <SimpleGrid m={[2, null, 6]} minChildWidth="350px" spacing="4">
+      <SimpleGrid my={[2, null, 6]} minChildWidth="350px" spacing="4">
         {error && <Error />}
         {data &&
           data
