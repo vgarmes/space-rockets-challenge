@@ -10,17 +10,19 @@ import {
   LaunchItem,
 } from '../components';
 import { useFavoritesContext } from '../context/favorites_context';
+import { useLaunchesContext } from '../context/launches_context';
 import { isFavorite } from '../utils';
 
 const PAGE_SIZE = 12;
 
 export default function Launches() {
+  const { sort, order } = useLaunchesContext();
   const { data, error, isValidating, setSize, size } = useSpaceXPaginated(
     '/launches/past',
     {
       limit: PAGE_SIZE,
-      order: 'desc',
-      sort: 'launch_date_utc',
+      order: order,
+      sort: sort,
     }
   );
 

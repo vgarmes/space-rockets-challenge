@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Divider,
@@ -9,9 +9,17 @@ import {
   Select,
 } from '@chakra-ui/core';
 import { IoGrid, IoList } from 'react-icons/io5';
+import { useLaunchesContext } from '../context/launches_context';
 
 const Sort = () => {
-  const sort = 'launch-date';
+  const [sortValue, setSortValue] = useState('launch-date-desc');
+  const { updateSort } = useLaunchesContext();
+  const handleChange = (e) => {
+    const value = e.target.value;
+    updateSort(value);
+    setSortValue(value);
+  };
+
   return (
     <Box d="flex" alignItems="center" justifyContent="space-between">
       <ButtonGroup spacing={2}>
@@ -36,7 +44,8 @@ const Sort = () => {
           <FormLabel
             htmlFor="sort"
             flexShrink="0"
-            py="0"
+            p="0"
+            mr={2}
             fontSize="sm"
             display={['none', 'block']}
           >
@@ -47,8 +56,9 @@ const Sort = () => {
             size="sm"
             name="sort"
             id="sort"
-            value={sort}
             fontSize="sm"
+            value={sortValue}
+            onChange={handleChange}
           >
             <option value="launch-date-asc">launch date (asc)</option>
             <option value="launch-date-desc">launch date (desc)</option>
