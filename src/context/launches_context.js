@@ -1,10 +1,11 @@
 import React, { useContext, useReducer } from 'react';
 import reducer from '../reducers/launches_reducer';
-import { SORT_ITEMS, UPDATE_SORT } from '../constants/actions';
+import { UPDATE_SORT, SET_GRIDVIEW, SET_LISTVIEW } from '../constants/actions';
 
 const initialState = {
   sort: 'launch_date_utc',
   order: 'desc',
+  grid_view: true,
 };
 
 const LaunchesContext = React.createContext();
@@ -16,8 +17,18 @@ export const LaunchesProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: value });
   };
 
+  const setGridView = () => {
+    dispatch({ type: SET_GRIDVIEW });
+  };
+
+  const setListView = () => {
+    dispatch({ type: SET_LISTVIEW });
+  };
+
   return (
-    <LaunchesContext.Provider value={{ ...state, updateSort }}>
+    <LaunchesContext.Provider
+      value={{ ...state, updateSort, setGridView, setListView }}
+    >
       {children}
     </LaunchesContext.Provider>
   );
