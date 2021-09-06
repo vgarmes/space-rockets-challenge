@@ -13,7 +13,8 @@ import { useLaunchesContext } from '../context/launches_context';
 
 const Sort = () => {
   const [sortValue, setSortValue] = useState('launch-date-desc');
-  const { updateSort } = useLaunchesContext();
+  const { updateSort, grid_view, setGridView, setListView } =
+    useLaunchesContext();
   const handleChange = (e) => {
     const value = e.target.value;
     updateSort(value);
@@ -29,6 +30,8 @@ const Sort = () => {
           fontSize="1.25rem"
           variant="outline"
           size="sm"
+          isActive={grid_view}
+          onClick={setGridView}
         />
         <IconButton
           aria-label="List view"
@@ -36,6 +39,8 @@ const Sort = () => {
           fontSize="1.25rem"
           variant="outline"
           size="sm"
+          isActive={!grid_view}
+          onClick={setListView}
         />
       </ButtonGroup>
       <Divider flexGrow="1" mx={2} />
