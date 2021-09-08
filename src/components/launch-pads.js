@@ -20,32 +20,12 @@ export default function LaunchPads() {
     }
   );
 
-  const {
-    favorites: { launch_pads },
-    addFavoriteLaunchPad,
-    removeFavoriteLaunchPad,
-  } = useFavoritesContext();
-
   return (
     <div>
       <Breadcrumbs
         items={[{ label: 'Home', to: '/' }, { label: 'Launch Pads' }]}
       />
-      <SimpleGrid my={[2, null, 6]} minChildWidth="350px" spacing="4">
-        {error && <Error />}
-        {data &&
-          data
-            .flat()
-            .map((launchPad) => (
-              <LaunchPadItem
-                key={launchPad.site_id}
-                launchPad={launchPad}
-                isFavorite={isFavorite(launch_pads, launchPad.id)}
-                addFavorite={addFavoriteLaunchPad}
-                removeFavorite={removeFavoriteLaunchPad}
-              />
-            ))}
-      </SimpleGrid>
+      <GridView data={data} error={error} />
       <LoadMoreButton
         loadMore={() => setSize(size + 1)}
         data={data}
@@ -53,6 +33,31 @@ export default function LaunchPads() {
         isLoadingMore={isValidating}
       />
     </div>
+  );
+}
+
+function GridView({ data, error }) {
+  const {
+    favorites: { launch_pads },
+    addFavoriteLaunchPad,
+    removeFavoriteLaunchPad,
+  } = useFavoritesContext();
+  return (
+    <SimpleGrid my={[2, null, 6]} minChildWidth="350px" spacing="4">
+      {error && <Error />}
+      {data &&
+        data
+          .flat()
+          .map((launchPad) => (
+            <LaunchPadItem
+              key={launchPad.site_id}
+              launchPad={launchPad}
+              isFavorite={isFavorite(launch_pads, launchPad.id)}
+              addFavorite={addFavoriteLaunchPad}
+              removeFavorite={removeFavoriteLaunchPad}
+            />
+          ))}
+    </SimpleGrid>
   );
 }
 
