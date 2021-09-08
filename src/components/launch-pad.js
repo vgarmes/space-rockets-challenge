@@ -22,7 +22,7 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 import { useSpaceX } from '../utils/use-space-x';
 import Error from './error';
 import Breadcrumbs from './breadcrumbs';
-import LaunchItem from './launch-item';
+import LaunchCard from './launch-card';
 import { useFavoritesContext } from '../context/favorites_context';
 import { isFavorite } from '../utils';
 
@@ -205,7 +205,7 @@ function RecentLaunches({ launches }) {
       </Text>
       <SimpleGrid minChildWidth="350px" spacing="4">
         {launches.map((launch) => (
-          <LaunchItem launch={launch} key={launch.flight_number} />
+          <LaunchCard launch={launch} key={launch.flight_number} />
         ))}
       </SimpleGrid>
     </Stack>

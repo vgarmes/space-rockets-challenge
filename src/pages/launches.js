@@ -7,16 +7,15 @@ import {
   LoadMoreButton,
   Filter,
   Sort,
-  LaunchItem,
+  LaunchCard,
+  LaunchListItem,
 } from '../components';
-import { useFavoritesContext } from '../context/favorites_context';
 import { useLaunchesContext } from '../context/launches_context';
-import { isFavorite } from '../utils';
 
 const PAGE_SIZE = 12;
 
 export default function Launches() {
-  const { sort, order } = useLaunchesContext();
+  const { sort, order, grid_view } = useLaunchesContext();
   const { data, error, isValidating, setSize, size } = useSpaceXPaginated(
     '/launches/past',
     {
@@ -26,12 +25,6 @@ export default function Launches() {
     }
   );
 
-  const {
-    favorites: { launches },
-    addFavoriteLaunch,
-    removeFavoriteLaunch,
-  } = useFavoritesContext();
-
   return (
     <div>
       <Breadcrumbs
@@ -39,21 +32,8 @@ export default function Launches() {
       />
       <Filter />
       <Sort />
-      <SimpleGrid my={[2, null, 6]} minChildWidth="350px" spacing="4">
-        {error && <Error />}
-        {data &&
-          data
-            .flat()
-            .map((launch) => (
-              <LaunchItem
-                launch={launch}
-                key={launch.flight_number}
-                isFavorite={isFavorite(launches, launch.flight_number)}
-                addFavorite={addFavoriteLaunch}
-                removeFavorite={removeFavoriteLaunch}
-              />
-            ))}
-      </SimpleGrid>
+      {grid_view && <GridView data={data} error={error} />}
+      {!grid_view && <ListView data={data} error={error} />}
       <LoadMoreButton
         loadMore={() => setSize(size + 1)}
         data={data}
@@ -61,5 +41,33 @@ export default function Launches() {
         isLoadingMore={isValidating}
       />
     </div>
+  );
+}
+
+function GridView({ data, error }) {
+  return (
+    <SimpleGrid my={[2, null, 6]} minChildWidth="350px" spacing="4">
+      {error && <Error />}
+      {data &&
+        data
+          .flat()
+          .map((launch) => (
+            <LaunchCard launch={launch} key={launch.flight_number} />
+          ))}
+    </SimpleGrid>
+  );
+}
+
+function ListView({ data, error }) {
+  return (
+    <SimpleGrid my={[2, null, 6]} columns="1" spacing="4">
+      {error && <Error />}
+      {data &&
+        data
+          .flat()
+          .map((launch) => (
+            <LaunchListItem launch={launch} key={launch.flight_number} />
+          ))}
+    </SimpleGrid>
   );
 }
