@@ -69,6 +69,10 @@ const Sort = () => {
             <option value="launch-date-desc">launch date (desc)</option>
             <option value="mission-name-a">mission name (a-z)</option>
             <option value="mission-name-z">mission name (z-a)</option>
+            <option value="launch-site-a">launch site (a-z)</option>
+            <option value="launch-site-z">launch site (z-a)</option>
+            <option value="rocket-a">rocket (a-z)</option>
+            <option value="rocket-z">rocket (z-a)</option>
           </Select>
         </FormControl>
       </form>

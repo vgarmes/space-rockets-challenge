@@ -17,12 +17,32 @@ const launches_reducer = (state, action) => {
 
     if (value === 'mission-name-a') {
       newSort = 'mission_name';
-      newOrder = 'desc';
+      newOrder = 'asc';
     }
 
     if (value === 'mission-name-z') {
-      newSort = 'mission-name';
+      newSort = 'mission_name';
+      newOrder = 'desc';
+    }
+
+    if (value === 'launch-site-a') {
+      newSort = 'site_name';
       newOrder = 'asc';
+    }
+
+    if (value === 'launch-site-z') {
+      newSort = 'site_name';
+      newOrder = 'desc';
+    }
+
+    if (value === 'rocket-a') {
+      newSort = 'rocket_name';
+      newOrder = 'asc';
+    }
+
+    if (value === 'rocket-z') {
+      newSort = 'rocket_name';
+      newOrder = 'desc';
     }
 
     return { ...state, sort: newSort, order: newOrder };
