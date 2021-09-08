@@ -5,7 +5,7 @@ import { UPDATE_SORT, SET_GRIDVIEW, SET_LISTVIEW } from '../constants/actions';
 const initialState = {
   sort: 'launch_date_utc',
   order: 'desc',
-  grid_view: true,
+  grid_view: false,
 };
 
 const LaunchesContext = React.createContext();
