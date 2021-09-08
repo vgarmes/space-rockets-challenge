@@ -25,7 +25,15 @@ export default function LaunchPads() {
       <Breadcrumbs
         items={[{ label: 'Home', to: '/' }, { label: 'Launch Pads' }]}
       />
-      <GridView data={data} error={error} />
+      <SimpleGrid my={[2, null, 6]} minChildWidth="350px" spacing="4">
+        {error && <Error />}
+        {data &&
+          data
+            .flat()
+            .map((launchPad) => (
+              <LaunchPadItem key={launchPad.site_id} launchPad={launchPad} />
+            ))}
+      </SimpleGrid>
       <LoadMoreButton
         loadMore={() => setSize(size + 1)}
         data={data}
@@ -36,32 +44,13 @@ export default function LaunchPads() {
   );
 }
 
-function GridView({ data, error }) {
+function LaunchPadItem({ launchPad }) {
   const {
     favorites: { launch_pads },
-    addFavoriteLaunchPad,
-    removeFavoriteLaunchPad,
+    addFavoriteLaunchPad: addFavorite,
+    removeFavoriteLaunchPad: removeFavorite,
   } = useFavoritesContext();
-  return (
-    <SimpleGrid my={[2, null, 6]} minChildWidth="350px" spacing="4">
-      {error && <Error />}
-      {data &&
-        data
-          .flat()
-          .map((launchPad) => (
-            <LaunchPadItem
-              key={launchPad.site_id}
-              launchPad={launchPad}
-              isFavorite={isFavorite(launch_pads, launchPad.id)}
-              addFavorite={addFavoriteLaunchPad}
-              removeFavorite={removeFavoriteLaunchPad}
-            />
-          ))}
-    </SimpleGrid>
-  );
-}
-
-function LaunchPadItem({ launchPad, isFavorite, addFavorite, removeFavorite }) {
+  const isPadFavorite = isFavorite(launch_pads, launchPad.id);
   return (
     <Box
       boxShadow="md"
@@ -72,7 +61,7 @@ function LaunchPadItem({ launchPad, isFavorite, addFavorite, removeFavorite }) {
     >
       <Box pt="2" px="6" d="flex" justifyContent="flex-end">
         <IconButton
-          icon={isFavorite ? FaStar : FaRegStar}
+          icon={isPadFavorite ? FaStar : FaRegStar}
           fontSize="1.25rem"
           variant="ghost"
           isRound={true}
@@ -80,7 +69,7 @@ function LaunchPadItem({ launchPad, isFavorite, addFavorite, removeFavorite }) {
           _hover={{ fontSize: '1.75rem' }}
           aria-label="add to favorites"
           onClick={() =>
-            isFavorite
+            isPadFavorite
               ? removeFavorite(launchPad.id)
               : addFavorite(launchPad.id, launchPad.site_name_long)
           }
