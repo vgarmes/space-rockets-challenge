@@ -11,17 +11,20 @@ import {
   LaunchListItem,
 } from '../components';
 import { useLaunchesContext } from '../context/launches_context';
+import { filters2params } from '../utils';
 
 const PAGE_SIZE = 12;
 
 export default function Launches() {
-  const { sort, order, grid_view } = useLaunchesContext();
+  const { sort, order, grid_view, filters } = useLaunchesContext();
+  const filterParams = filters2params(filters);
   const { data, error, isValidating, setSize, size } = useSpaceXPaginated(
     '/launches/past',
     {
       limit: PAGE_SIZE,
       order: order,
       sort: sort,
+      ...filterParams,
     }
   );
 
