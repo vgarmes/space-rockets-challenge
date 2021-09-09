@@ -8,7 +8,6 @@ import {
   AccordionPanel,
   CheckboxGroup,
   Checkbox,
-  Text,
 } from '@chakra-ui/core';
 import { useLaunchesContext } from '../context/launches_context';
 
