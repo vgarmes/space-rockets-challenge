@@ -13,7 +13,7 @@ import { useLaunchesContext } from '../context/launches_context';
 
 const Filter = () => {
   return (
-    <Accordion defaultIndex={[0]} allowToggle mb={2}>
+    <Accordion defaultIndex={[]} allowToggle mb={2}>
       <AccordionItem border="0">
         <AccordionHeader px="0">
           <Box
