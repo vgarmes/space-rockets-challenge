@@ -34,7 +34,7 @@ const LaunchListItem = ({ launch }) => {
       overflow="hidden"
     >
       <Box d="flex" justifyContent="space-between" mb="4">
-        <Stack isInline spacing="3" mt="2">
+        <Stack isInline spacing="3" mt="2" alignItems="center">
           <Badge variantColor="purple" fontSize="xs">
             #{launch.flight_number}
           </Badge>
