@@ -10,7 +10,7 @@ import {
 const initialState = {
   sort: 'launch_date_utc',
   order: 'desc',
-  grid_view: false,
+  grid_view: true,
   filters: {
     launch_success: ['successful', 'failed'],
   },
