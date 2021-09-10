@@ -10,7 +10,7 @@ export function formatDate(timestamp) {
 }
 
 export function formatDateTime(timestamp, keepTimeZone = false) {
-  return new DateTime.fromISO(timestamp, {
+  return DateTime.fromISO(timestamp, {
     setZone: keepTimeZone,
   })
     .setLocale('en')
