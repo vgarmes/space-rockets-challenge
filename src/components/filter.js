@@ -12,13 +12,14 @@ import {
   Select,
   SimpleGrid,
   Input,
+  Button,
 } from '@chakra-ui/core';
 import { useLaunchesContext } from '../context/launches_context';
 import { useSpaceX } from '../utils/use-space-x';
 import { validateDate } from '../utils';
 
 const Filter = () => {
-  const { filters, updateFilters } = useLaunchesContext();
+  const { filters, updateFilters, clearFilters } = useLaunchesContext();
   return (
     <Accordion defaultIndex={[]} allowToggle mb={2}>
       <AccordionItem border="0">
@@ -41,6 +42,9 @@ const Filter = () => {
             <SiteSelect filters={filters} updateFilters={updateFilters} />
             <DateSelect filters={filters} updateFilters={updateFilters} />
           </SimpleGrid>
+          <Button size="sm" variantColor="red" onClick={clearFilters} mt="4">
+            Clear all
+          </Button>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
