@@ -16,3 +16,7 @@ export function formatDateTime(timestamp, keepTimeZone = false) {
     .setLocale('en')
     .toLocaleString({ ...DateTime.DATETIME_FULL_WITH_SECONDS });
 }
+
+export function todayISO() {
+  return DateTime.now().toISODate();
+}
