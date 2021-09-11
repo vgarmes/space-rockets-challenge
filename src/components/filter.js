@@ -11,9 +11,11 @@ import {
   Text,
   Select,
   SimpleGrid,
+  Input,
 } from '@chakra-ui/core';
 import { useLaunchesContext } from '../context/launches_context';
 import { useSpaceX } from '../utils/use-space-x';
+import { validateDate } from '../utils';
 
 const Filter = () => {
   const { filters, updateFilters } = useLaunchesContext();
@@ -34,9 +36,10 @@ const Filter = () => {
           <AccordionIcon />
         </AccordionHeader>
         <AccordionPanel pl={1} pb={4}>
-          <SimpleGrid columns={['1', '3']} spacing="4">
+          <SimpleGrid columns={['1', '2']} spacing="4">
             <SuccessCheckbox filters={filters} updateFilters={updateFilters} />
             <SiteSelect filters={filters} updateFilters={updateFilters} />
+            <DateSelect filters={filters} updateFilters={updateFilters} />
           </SimpleGrid>
         </AccordionPanel>
       </AccordionItem>
@@ -107,6 +110,44 @@ const SiteSelect = ({ filters: { site_id }, updateFilters }) => {
             ))}
       </Select>
     </Box>
+  );
+};
+
+const DateSelect = ({ filters: { date_range }, updateFilters }) => {
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    updateFilters('date_range', validateDate(name, value, date_range));
+  };
+  return (
+    <SimpleGrid columns="2" spacing="2">
+      <Box>
+        <Text fontSize="sm" fontWeight="bold" mb="2">
+          Start date:
+        </Text>
+        <Input
+          size="sm"
+          type="date"
+          id="start"
+          name="start"
+          value={date_range.start}
+          onChange={handleChange}
+        />
+      </Box>
+      <Box>
+        <Text fontSize="sm" fontWeight="bold" mb="2">
+          End date:
+        </Text>
+        <Input
+          size="sm"
+          type="date"
+          id="end"
+          name="end"
+          value={date_range.end}
+          onChange={handleChange}
+        />
+      </Box>
+    </SimpleGrid>
   );
 };
 
