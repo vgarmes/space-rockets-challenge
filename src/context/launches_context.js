@@ -14,6 +14,7 @@ const initialState = {
   filters: {
     launch_success: ['successful', 'failed'],
     site_id: 'all',
+    date_range: { start: '', end: '' },
   },
 };
 
