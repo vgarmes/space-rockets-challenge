@@ -9,6 +9,9 @@ export const filters2params = (filters) => {
       const value = filters[key][0] === 'successful' ? 'true' : 'false';
       params = { ...params, launch_success: value };
     }
+    if (key === 'site_id' && filters[key] !== 'all') {
+      params = { ...params, site_id: filters[key] };
+    }
   });
   return params;
 };
