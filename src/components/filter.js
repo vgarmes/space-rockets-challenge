@@ -8,10 +8,13 @@ import {
   AccordionPanel,
   CheckboxGroup,
   Checkbox,
+  Select,
 } from '@chakra-ui/core';
 import { useLaunchesContext } from '../context/launches_context';
+import { useSpaceX } from '../utils/use-space-x';
 
 const Filter = () => {
+  const { filters, updateFilters } = useLaunchesContext();
   return (
     <Accordion defaultIndex={[]} allowToggle mb={2}>
       <AccordionItem border="0">
@@ -29,22 +32,20 @@ const Filter = () => {
           <AccordionIcon />
         </AccordionHeader>
         <AccordionPanel pl={1} pb={4}>
-          <SuccessCheckbox />
+          <SuccessCheckbox filters={filters} updateFilters={updateFilters} />
+          <SiteSelect filters={filters} updateFilters={updateFilters} />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
   );
 };
 
-const SuccessCheckbox = () => {
-  const { filters, updateFilters } = useLaunchesContext();
+const SuccessCheckbox = ({ filters: { launch_success }, updateFilters }) => {
   const handleChange = (newValues) => {
     let tempValues = [...newValues];
     if (newValues.length === 0) {
       tempValues =
-        filters.launch_success[0] === 'successful'
-          ? ['failed']
-          : ['successful'];
+        launch_success[0] === 'successful' ? ['failed'] : ['successful'];
     }
     updateFilters('launch_success', tempValues);
   };
@@ -54,12 +55,43 @@ const SuccessCheckbox = () => {
       spacing={4}
       size="sm"
       name="launch_success"
-      value={filters.launch_success}
+      value={launch_success}
       onChange={handleChange}
     >
       <Checkbox value="successful">Successful</Checkbox>
       <Checkbox value="failed">Failed</Checkbox>
     </CheckboxGroup>
+  );
+};
+
+const SiteSelect = ({ filters: { site_id }, updateFilters }) => {
+  const { data, error } = useSpaceX('/launchpads');
+  const handleChange = (e) => {
+    const value = e.target.value;
+    updateFilters('site_id', value);
+  };
+  return (
+    <Select
+      variant="outline"
+      size="sm"
+      name="sort"
+      id="sort"
+      fontSize="sm"
+      placeholder={site_id}
+      value={site_id}
+      onChange={handleChange}
+    >
+      {error && <option disabled>There was an error</option>}
+      {data &&
+        data
+          .flat()
+          .sort((a, b) => a.site_name_long.localeCompare(b.site_name_long))
+          .map((launchPad) => (
+            <option key={launchPad.id} value={launchPad.site_id}>
+              {launchPad.site_name_long}
+            </option>
+          ))}
+    </Select>
   );
 };
 
