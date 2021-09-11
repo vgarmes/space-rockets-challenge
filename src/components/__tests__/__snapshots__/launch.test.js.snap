@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`launch card renders correctly 1`] = `
+<div
+  className="css-xy2y08"
+>
+  <a
+    href="/launches/1"
+    onClick={[Function]}
+  >
+    <img
+      alt="FalconSat launch"
+      className="css-uguhfr"
+    />
+    <img
+      className="css-16kejvl"
+    />
+  </a>
+  <div
+    className="css-w1195t"
+  >
+    <button
+      aria-label="add to favorites"
+      className="css-7eogws"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden={true}
+        className="css-thzv76"
+        fill="currentColor"
+        focusable="false"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 576 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
+        />
+      </svg>
+    </button>
+  </div>
+  <a
+    href="/launches/1"
+    onClick={[Function]}
+  >
+    <div
+      className="css-pb0lco"
+    >
+      <div
+        className="css-x1sij0"
+      >
+        <div
+          className="css-nmjz1c"
+        >
+          Failed
+        </div>
+        <div
+          className="css-1ii03pb"
+        >
+          Falcon 1
+           • 
+          Kwajalein Atoll
+        </div>
+      </div>
+      <h4
+        className="css-1p80adt"
+      >
+        FalconSat
+      </h4>
+      <div
+        className="css-k008qs"
+      >
+        <p
+          className="css-179wyjh"
+        >
+          Friday, March 24, 2006
+           
+        </p>
+        <p
+          className="css-1tgmsub"
+        >
+          15 years ago
+        </p>
+      </div>
+    </div>
+  </a>
+</div>
+`;
+
+exports[`launch list item renders correctly 1`] = `
+<div
+  className="css-2zlj99"
+>
+  <div
+    className="css-1saiftj"
+  >
+    <div
+      className="css-125dic6"
+    >
+      <div
+        className="css-o3o4vv"
+      >
+        #
+        1
+      </div>
+      <div
+        className="css-1mtcivz"
+      >
+        Failed
+      </div>
+    </div>
+    <button
+      aria-label="add to favorites"
+      className="css-7eogws"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden={true}
+        className="css-thzv76"
+        fill="currentColor"
+        focusable="false"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 576 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
+        />
+      </svg>
+    </button>
+  </div>
+  <a
+    href="/launches/1"
+    onClick={[Function]}
+  >
+    <div
+      className="css-82wwfp"
+    >
+      <div
+        className="css-j0m6ar"
+      >
+        <p
+          className="css-gqdid"
+        >
+          <svg
+            className="css-1buzfhb"
+            fill="none"
+            height={24}
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"
+            />
+            <line
+              x1="7"
+              x2="7.01"
+              y1="7"
+              y2="7"
+            />
+          </svg>
+           
+          <span
+            className="css-1f2k2gl"
+          >
+            Mission name
+          </span>
+        </p>
+        <p
+          className="css-1e0cvq0"
+        >
+          FalconSat
+        </p>
+      </div>
+      <div
+        className="css-j0m6ar"
+      >
+        <p
+          className="css-gqdid"
+        >
+          <svg
+            className="css-1buzfhb"
+            fill="none"
+            height={24}
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="7"
+            />
+            <polyline
+              points="12 9 12 12 13.5 13.5"
+            />
+            <path
+              d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"
+            />
+          </svg>
+           
+          <span
+            className="css-1f2k2gl"
+          >
+            Launch Date
+          </span>
+        </p>
+        <p
+          className="css-1e0cvq0"
+        >
+          March 25, 2006, 10:30:00 AM GMT+12
+        </p>
+        <p
+          className="css-1lq3jyp"
+        >
+          15 years ago
+        </p>
+      </div>
+      <div
+        className="css-j0m6ar"
+      >
+        <p
+          className="css-gqdid"
+        >
+          <svg
+            className="css-1buzfhb"
+            fill="none"
+            height={24}
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+            />
+            <circle
+              cx="12"
+              cy="10"
+              r="3"
+            />
+          </svg>
+           
+          <span
+            className="css-1f2k2gl"
+          >
+            Launch Site
+          </span>
+        </p>
+        <p
+          className="css-1e0cvq0"
+        >
+          Kwajalein Atoll Omelek Island
+        </p>
+        <p
+          className="css-1lq3jyp"
+        >
+          Kwajalein Atoll
+        </p>
+      </div>
+      <div
+        className="css-j0m6ar"
+      >
+        <p
+          className="css-gqdid"
+        >
+          <svg
+            className="css-1buzfhb"
+            fill="none"
+            height={24}
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            width={24}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polygon
+              points="3 11 22 2 13 21 11 13 3 11"
+            />
+          </svg>
+           
+          <span
+            className="css-1f2k2gl"
+          >
+            Rocket
+          </span>
+        </p>
+        <p
+          className="css-1e0cvq0"
+        >
+          Falcon 1
+        </p>
+        <p
+          className="css-1lq3jyp"
+        >
+          Merlin A
+        </p>
+      </div>
+    </div>
+  </a>
+</div>
+`;
