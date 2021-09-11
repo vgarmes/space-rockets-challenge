@@ -3,6 +3,7 @@ import {
   SET_GRIDVIEW,
   SET_LISTVIEW,
   UPDATE_FILTERS,
+  CLEAR_FILTERS,
 } from '../constants/actions';
 
 const launches_reducer = (state, action) => {
@@ -65,6 +66,10 @@ const launches_reducer = (state, action) => {
     const { name, value } = action.payload;
 
     return { ...state, filters: { ...state.filters, [name]: value } };
+  }
+
+  if (action.type === CLEAR_FILTERS) {
+    return { ...state, filters: action.payload };
   }
 
   throw new Error(`No matching "${action.type}" - action type`);

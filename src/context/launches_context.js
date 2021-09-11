@@ -5,6 +5,7 @@ import {
   SET_GRIDVIEW,
   SET_LISTVIEW,
   UPDATE_FILTERS,
+  CLEAR_FILTERS,
 } from '../constants/actions';
 
 const initialState = {
@@ -39,9 +40,20 @@ export const LaunchesProvider = ({ children }) => {
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS, payload: initialState.filters });
+  };
+
   return (
     <LaunchesContext.Provider
-      value={{ ...state, updateSort, setGridView, setListView, updateFilters }}
+      value={{
+        ...state,
+        updateSort,
+        setGridView,
+        setListView,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </LaunchesContext.Provider>
