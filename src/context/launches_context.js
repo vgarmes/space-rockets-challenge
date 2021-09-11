@@ -13,6 +13,7 @@ const initialState = {
   grid_view: true,
   filters: {
     launch_success: ['successful', 'failed'],
+    site_id: 'all',
   },
 };
 
