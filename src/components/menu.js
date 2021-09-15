@@ -17,6 +17,7 @@ import {
   AccordionIcon,
   AccordionPanel,
   Link,
+  Icon,
 } from '@chakra-ui/core';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
@@ -28,7 +29,8 @@ const MenuLink = ({ id, name, pathRoot, currentPath }) => {
 
   return (
     <RouterLink to={path}>
-      <Box w="100%">
+      <Box w="100%" d="flex" alignItems="center">
+        {isActive && <Icon name="arrow-right" size="0.5em" color="teal.500" />}
         <Text
           fontSize="sm"
           fontWeight={`${isActive ? '700' : '400'}`}
