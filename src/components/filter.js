@@ -42,9 +42,11 @@ const Filter = () => {
             <SiteSelect filters={filters} updateFilters={updateFilters} />
             <DateSelect filters={filters} updateFilters={updateFilters} />
           </SimpleGrid>
-          <Button size="sm" variantColor="red" onClick={clearFilters} mt="4">
-            Clear all
-          </Button>
+          <Box d="flex" justifyContent="center">
+            <Button variantColor="red" onClick={clearFilters} mt="8">
+              Clear all
+            </Button>
+          </Box>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
