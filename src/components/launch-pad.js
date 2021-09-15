@@ -124,11 +124,11 @@ function Buttons({ launchPad }) {
 
   return (
     <Stack spacing="3" justifyContent={['center', 'flex-end']} isInline>
-      {isFavorite(launch_pads, launchPad.id) ? (
+      {isFavorite(launch_pads, launchPad.site_id) ? (
         <Button
           variantColor="red"
           leftIcon={FaStar}
-          onClick={() => removeFavoriteLaunchPad(launchPad.id)}
+          onClick={() => removeFavoriteLaunchPad(launchPad.site_id)}
         >
           Favorite
         </Button>
@@ -138,7 +138,7 @@ function Buttons({ launchPad }) {
           variantColor="red"
           leftIcon={FaRegStar}
           onClick={() =>
-            addFavoriteLaunchPad(launchPad.id, launchPad.site_name_long)
+            addFavoriteLaunchPad(launchPad.site_id, launchPad.site_name_long)
           }
         >
           Add to favorites

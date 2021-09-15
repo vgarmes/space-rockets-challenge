@@ -50,7 +50,7 @@ function LaunchPadItem({ launchPad }) {
     addFavoriteLaunchPad: addFavorite,
     removeFavoriteLaunchPad: removeFavorite,
   } = useFavoritesContext();
-  const isPadFavorite = isFavorite(launch_pads, launchPad.id);
+  const isPadFavorite = isFavorite(launch_pads, launchPad.site_id);
   return (
     <Box
       boxShadow="md"
@@ -70,8 +70,8 @@ function LaunchPadItem({ launchPad }) {
           aria-label="add to favorites"
           onClick={() =>
             isPadFavorite
-              ? removeFavorite(launchPad.id)
-              : addFavorite(launchPad.id, launchPad.site_name_long)
+              ? removeFavorite(launchPad.site_id)
+              : addFavorite(launchPad.site_id, launchPad.site_name_long)
           }
         />
       </Box>
