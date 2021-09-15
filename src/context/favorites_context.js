@@ -5,6 +5,7 @@ import {
   REMOVE_FAVORITE_LAUNCH,
   ADD_FAVORITE_LAUNCHPAD,
   REMOVE_FAVORITE_LAUNCHPAD,
+  TOGGLE_EXPANDED_MENU_ITEM,
 } from '../constants/actions';
 
 const getLocalStorage = () => {
@@ -18,6 +19,7 @@ const getLocalStorage = () => {
 
 const initialState = {
   favorites: getLocalStorage(),
+  expandedMenuItems: [false, false],
 };
 
 const FavoritesContext = React.createContext();
@@ -53,6 +55,14 @@ export const FavoritesProvider = ({ children }) => {
     });
   };
 
+  const toggleExpandedMenuItem = (index) => {
+    console.log(index);
+    dispatch({
+      type: TOGGLE_EXPANDED_MENU_ITEM,
+      payload: index,
+    });
+  };
+
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(state.favorites));
   }, [state.favorites]);
@@ -65,6 +75,7 @@ export const FavoritesProvider = ({ children }) => {
         removeFavoriteLaunch,
         addFavoriteLaunchPad,
         removeFavoriteLaunchPad,
+        toggleExpandedMenuItem,
       }}
     >
       {children}

@@ -43,9 +43,16 @@ const MenuLink = ({ id, name, pathRoot, currentPath }) => {
   );
 };
 
-const MenuLinksGroup = ({ title, items, pathRoot, currentPath }) => {
+const FavoriteGroup = ({
+  title,
+  items,
+  pathRoot,
+  isGroupOpen,
+  handleChange,
+}) => {
+  const { pathname } = useLocation();
   return (
-    <AccordionItem border="0">
+    <AccordionItem border="0" isOpen={isGroupOpen} onChange={handleChange}>
       <AccordionHeader px="0">
         <Box
           flex="1"
@@ -71,7 +78,7 @@ const MenuLinksGroup = ({ title, items, pathRoot, currentPath }) => {
                 <MenuLink
                   {...item}
                   pathRoot={pathRoot}
-                  currentPath={currentPath}
+                  currentPath={pathname}
                 />
               </ListItem>
             ))}
@@ -83,8 +90,17 @@ const MenuLinksGroup = ({ title, items, pathRoot, currentPath }) => {
 };
 
 const DrawerMenu = ({ isOpen, onClose, btnRef }) => {
-  const { favorites } = useFavoritesContext();
-  const { pathname } = useLocation();
+  const { favorites, expandedMenuItems, toggleExpandedMenuItem } =
+    useFavoritesContext();
+
+  const favoriteGroups = [
+    { title: 'launches', items: favorites.launches, pathRoot: '/launches' },
+    {
+      title: 'launch pads',
+      items: favorites.launch_pads,
+      pathRoot: '/launch-pads',
+    },
+  ];
 
   return (
     <Drawer
@@ -98,20 +114,15 @@ const DrawerMenu = ({ isOpen, onClose, btnRef }) => {
         <DrawerCloseButton />
         <DrawerHeader>Menu</DrawerHeader>
         <DrawerBody>
-          <Accordion defaultIndex={[0]} allowMultiple allowToggle>
-            <MenuLinksGroup
-              title="Launches"
-              items={favorites.launches}
-              pathRoot="/launches"
-              currentPath={pathname}
-            />
-
-            <MenuLinksGroup
-              title="Launch pads"
-              items={favorites.launch_pads}
-              pathRoot="/launch-pads"
-              currentPath={pathname}
-            />
+          <Accordion allowMultiple allowToggle>
+            {favoriteGroups.map((group, index) => (
+              <FavoriteGroup
+                key={index}
+                {...group}
+                isGroupOpen={expandedMenuItems[index]}
+                handleChange={() => toggleExpandedMenuItem(index)}
+              />
+            ))}
           </Accordion>
         </DrawerBody>
         <DrawerFooter>Drawer footer</DrawerFooter>

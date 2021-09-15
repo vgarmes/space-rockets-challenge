@@ -3,6 +3,7 @@ import {
   REMOVE_FAVORITE_LAUNCH,
   ADD_FAVORITE_LAUNCHPAD,
   REMOVE_FAVORITE_LAUNCHPAD,
+  TOGGLE_EXPANDED_MENU_ITEM,
 } from '../constants/actions';
 
 const favorites_reducer = (state, action) => {
@@ -52,6 +53,14 @@ const favorites_reducer = (state, action) => {
     };
 
     return { ...state, favorites: tempFavorites };
+  }
+
+  if (action.type === TOGGLE_EXPANDED_MENU_ITEM) {
+    const newItems = state.expandedMenuItems.map((item, index) =>
+      index === action.payload ? !item : item
+    );
+
+    return { ...state, expandedMenuItems: newItems };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);
