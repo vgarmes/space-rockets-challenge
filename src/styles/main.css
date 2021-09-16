@@ -28,3 +28,13 @@
   transform: translateY(0px);
   transition: opacity 300ms var(--easing), transform 300ms var(--easing);
 }
+
+.fade-enter {
+  opacity: 0;
+  transition: opacity 300ms var(--easing);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms var(--easing);
+}
