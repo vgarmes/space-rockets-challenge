@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import { FavoritesProvider } from './context/favorites_context';
 import { LaunchesProvider } from './context/launches_context';
+import './styles/main.css';
 
 import App from './app';
 
