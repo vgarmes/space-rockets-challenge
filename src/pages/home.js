@@ -36,8 +36,8 @@ export default function Home() {
       <CustomCSSTransition
         classNames="fade"
         timeout={animationTimeout}
-        delay={250}
         trigger={isMounted}
+        delay={250}
       >
         <PageLink url="/launch-pads">Browse SpaceX Launch Pads</PageLink>
       </CustomCSSTransition>
@@ -70,6 +70,8 @@ const CustomCSSTransition = ({
   delay,
   ...rest
 }) => {
+  /* props from parent chakra-ui component are passed in {..rest}
+  and default transitions are overriden */
   return (
     <CSSTransition
       in={trigger}
@@ -78,7 +80,7 @@ const CustomCSSTransition = ({
       style={{ transitionDelay: `${delay ? delay : '0'}ms` }}
       unmountOnExit
     >
-      {React.cloneElement(children, { ...rest })}
+      {React.cloneElement(children, { transition: '', ...rest })}
     </CSSTransition>
   );
 };
