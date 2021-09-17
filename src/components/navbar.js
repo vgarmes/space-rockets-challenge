@@ -86,12 +86,7 @@ const Navbar = ({ isHome }) => {
             timeout={timeout}
             unmountOnExit
           >
-            <Button
-              ref={drawerBtnRef}
-              variant="outline"
-              onClick={onOpen}
-              style={{ transitionDelay: `${isHome ? 200 : 0}ms` }}
-            >
+            <Button ref={drawerBtnRef} variant="outline" onClick={onOpen}>
               Menu
             </Button>
           </CSSTransition>
