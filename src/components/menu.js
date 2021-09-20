@@ -96,9 +96,13 @@ const DrawerMenu = ({ isOpen, onClose, btnRef }) => {
     useFavoritesContext();
 
   const favoriteGroups = [
-    { title: 'launches', items: favorites.launches, pathRoot: '/launches' },
     {
-      title: 'launch pads',
+      title: 'favorite launches',
+      items: favorites.launches,
+      pathRoot: '/launches',
+    },
+    {
+      title: 'favorite launch pads',
       items: favorites.launch_pads,
       pathRoot: '/launch-pads',
     },
