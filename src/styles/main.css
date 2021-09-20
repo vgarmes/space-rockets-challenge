@@ -36,5 +36,5 @@
 
 .fade-enter-active {
   opacity: 1;
-  transition: opacity 300ms var(--easing);
+  transition: opacity 500ms var(--easing);
 }
