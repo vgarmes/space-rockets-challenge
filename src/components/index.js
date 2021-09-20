@@ -8,8 +8,8 @@ import Filter from './filter';
 import Sort from './sort';
 import LoadMoreButton from './load-more-button';
 import LaunchListItem from './launch-list-item';
-import GridView from './GridView';
-import ListView from './ListView';
+import GridView from './grid-view';
+import ListView from './list-view';
 import LaunchPadItem from './launch-pad-item';
 export {
   Layout,

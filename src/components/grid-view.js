@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { SimpleGrid } from '@chakra-ui/core';
-import { Error, LaunchCard } from '../components';
+import { Error, LaunchCard } from '.';
 
 import usePrefersReducedMotion from '../utils/usePrefersReducedMotion';
 import Fade from 'react-reveal/Fade';
