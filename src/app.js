@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { Layout, LaunchPads, LaunchPad } from './components';
-import { Home, Launches, Launch } from './pages';
+import { Layout } from './components';
+import { Home, Launches, LaunchPads, Launch, LaunchPad } from './pages';
 
 export default function App() {
   return (

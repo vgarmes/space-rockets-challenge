@@ -3,8 +3,6 @@ import Navbar from './navbar';
 import Breadcrumbs from './breadcrumbs';
 import Error from './error';
 import LaunchCard from './launch-card';
-import LaunchPads from './launch-pads';
-import LaunchPad from './launch-pad';
 import DrawerMenu from './menu';
 import Filter from './filter';
 import Sort from './sort';
@@ -18,8 +16,6 @@ export {
   Breadcrumbs,
   Error,
   LaunchCard,
-  LaunchPads,
-  LaunchPad,
   DrawerMenu,
   Filter,
   LoadMoreButton,

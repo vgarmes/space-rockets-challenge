@@ -20,9 +20,7 @@ import {
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
 import { useSpaceX } from '../utils/use-space-x';
-import Error from './error';
-import Breadcrumbs from './breadcrumbs';
-import LaunchCard from './launch-card';
+import { LaunchCard, Breadcrumbs, Error } from '../components';
 import { useFavoritesContext } from '../context/favorites_context';
 import { isFavorite } from '../utils';
 

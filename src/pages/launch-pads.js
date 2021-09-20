@@ -3,9 +3,7 @@ import { Badge, Box, SimpleGrid, Text, IconButton } from '@chakra-ui/core';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import Error from './error';
-import Breadcrumbs from './breadcrumbs';
-import LoadMoreButton from './load-more-button';
+import { Breadcrumbs, LoadMoreButton, Error } from '../components';
 import { useSpaceXPaginated } from '../utils/use-space-x';
 import { useFavoritesContext } from '../context/favorites_context';
 import { isFavorite } from '../utils';
