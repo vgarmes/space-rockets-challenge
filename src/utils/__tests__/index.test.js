@@ -25,6 +25,8 @@ test('favorites array does not contain a favorite item', () => {
 test('filters are converted to query strings 1', () => {
   const filters = {
     launch_success: ['successful', 'failed'],
+    site_id: 'all',
+    date_range: { start: '', end: '' },
   };
 
   const expected = {};
@@ -35,9 +37,16 @@ test('filters are converted to query strings 1', () => {
 test('filters are converted to query strings 2', () => {
   const filters = {
     launch_success: ['successful'],
+    site_id: 'ccafs_slc_40',
+    date_range: { start: '2020-01-01', end: '2021-01-01' },
   };
 
-  const expected = { launch_success: 'true' };
+  const expected = {
+    launch_success: 'true',
+    site_id: 'ccafs_slc_40',
+    start: '2020-01-01',
+    end: '2021-01-01',
+  };
 
   expect(filters2params(filters)).toEqual(expected);
 });
