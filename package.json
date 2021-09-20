@@ -17,10 +17,10 @@
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
     "react-icons": "^4.2.0",
+    "react-reveal": "^1.2.2",
     "react-router": "^6.0.0-alpha.3",
     "react-router-dom": "^6.0.0-alpha.3",
     "react-scripts": "3.4.3",
-    "react-transition-group": "^4.4.2",
     "swr": "^0.3.0",
     "timeago.js": "^4.0.2"
   },
