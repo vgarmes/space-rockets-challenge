@@ -203,7 +203,7 @@ function RecentLaunches({ launches }) {
       </Text>
       <SimpleGrid minChildWidth="350px" spacing="4">
         {launches.map((launch) => (
-          <LaunchCard launch={launch} key={launch.flight_number} />
+          <LaunchCard key={launch.flight_number} {...launch} />
         ))}
       </SimpleGrid>
     </Stack>
