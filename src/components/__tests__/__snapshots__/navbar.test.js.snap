@@ -33,13 +33,14 @@ exports[`drawer is closed by default 1`] = `
   </div>
   <div>
     <nav
-      class="css-vn1rpq"
+      class="css-17ah0mx"
     >
-      <p
+      <a
         class="css-vjjv55"
+        href="/"
       >
         ¡SPACE·R0CKETS!
-      </p>
+      </a>
       <button
         class="css-1wyike"
         type="button"
@@ -89,13 +90,14 @@ exports[`drawer slides in on menu click 1`] = `
     data-aria-hidden="true"
   >
     <nav
-      class="css-vn1rpq"
+      class="css-17ah0mx"
     >
-      <p
+      <a
         class="css-vjjv55"
+        href="/"
       >
         ¡SPACE·R0CKETS!
-      </p>
+      </a>
       <button
         class="css-1wyike"
         type="button"
@@ -182,7 +184,7 @@ exports[`drawer slides in on menu click 1`] = `
                   <div
                     class="css-10d20og"
                   >
-                    Launches
+                    favorite launches
                   </div>
                   <svg
                     aria-hidden="true"
@@ -237,7 +239,7 @@ exports[`drawer slides in on menu click 1`] = `
                   <div
                     class="css-10d20og"
                   >
-                    Launch pads
+                    favorite launch pads
                   </div>
                   <svg
                     aria-hidden="true"

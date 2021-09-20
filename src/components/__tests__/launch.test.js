@@ -13,7 +13,7 @@ it('launch card renders correctly', () => {
         <FavoritesProvider>
           <ThemeProvider>
             <CSSReset />
-            <LaunchCard launch={launch} />
+            <LaunchCard {...launch} />
           </ThemeProvider>
         </FavoritesProvider>
       </Router>
