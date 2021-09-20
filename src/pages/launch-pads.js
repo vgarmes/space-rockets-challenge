@@ -1,10 +1,9 @@
 import React from 'react';
-import { SimpleGrid } from '@chakra-ui/core';
 import {
   Breadcrumbs,
   LaunchPadItem,
   LoadMoreButton,
-  Error,
+  GridView,
 } from '../components';
 import { useSpaceXPaginated } from '../utils/use-space-x';
 import { PAGE_SIZE } from '../constants';
@@ -22,15 +21,9 @@ export default function LaunchPads() {
       <Breadcrumbs
         items={[{ label: 'Home', to: '/' }, { label: 'Launch Pads' }]}
       />
-      <SimpleGrid my={[2, null, 6]} minChildWidth="350px" spacing="4">
-        {error && <Error />}
-        {data &&
-          data
-            .flat()
-            .map((launchPad) => (
-              <LaunchPadItem key={launchPad.site_id} launchPad={launchPad} />
-            ))}
-      </SimpleGrid>
+      <GridView data={data} error={error} keyName="site_id">
+        <LaunchPadItem />
+      </GridView>
       <LoadMoreButton
         loadMore={() => setSize(size + 1)}
         data={data}

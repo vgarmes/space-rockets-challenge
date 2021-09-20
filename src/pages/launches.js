@@ -7,6 +7,7 @@ import {
   Sort,
   GridView,
   ListView,
+  LaunchCard,
 } from '../components';
 import { useLaunchesContext } from '../context/launches_context';
 import { filters2params } from '../utils';
@@ -33,7 +34,9 @@ export default function Launches() {
       <Filter />
       <Sort />
       {grid_view ? (
-        <GridView data={data} error={error} />
+        <GridView data={data} error={error} keyName="flight_number">
+          <LaunchCard />
+        </GridView>
       ) : (
         <ListView data={data} error={error} />
       )}

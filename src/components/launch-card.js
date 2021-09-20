@@ -7,13 +7,21 @@ import { formatDate } from '../utils/format-date';
 import { useFavoritesContext } from '../context/favorites_context';
 import { isFavorite } from '../utils';
 
-const LaunchCard = ({ launch }) => {
+const LaunchCard = ({
+  flight_number,
+  links,
+  mission_name,
+  launch_success,
+  rocket,
+  launch_site,
+  launch_date_utc,
+}) => {
   const {
     favorites: { launches },
     addFavoriteLaunch: addFavorite,
     removeFavoriteLaunch: removeFavorite,
   } = useFavoritesContext();
-  const isLaunchFavorite = isFavorite(launches, launch.flight_number);
+  const isLaunchFavorite = isFavorite(launches, flight_number);
   return (
     <Box
       boxShadow="md"
@@ -22,13 +30,13 @@ const LaunchCard = ({ launch }) => {
       overflow="hidden"
       position="relative"
     >
-      <Link to={`/launches/${launch.flight_number.toString()}`}>
+      <Link to={`/launches/${flight_number.toString()}`}>
         <Image
           src={
-            launch.links.flickr_images[0]?.replace('_o.jpg', '_z.jpg') ??
-            launch.links.mission_patch_small
+            links.flickr_images[0]?.replace('_o.jpg', '_z.jpg') ??
+            links.mission_patch_small
           }
-          alt={`${launch.mission_name} launch`}
+          alt={`${mission_name} launch`}
           height={['200px', null, '300px']}
           width="100%"
           objectFit="cover"
@@ -39,7 +47,7 @@ const LaunchCard = ({ launch }) => {
           position="absolute"
           top="5"
           right="5"
-          src={launch.links.mission_patch_small}
+          src={links.mission_patch_small}
           height="75px"
           objectFit="contain"
           objectPosition="bottom"
@@ -56,15 +64,15 @@ const LaunchCard = ({ launch }) => {
           aria-label="add to favorites"
           onClick={() =>
             isLaunchFavorite
-              ? removeFavorite(launch.flight_number)
-              : addFavorite(launch.flight_number, launch.mission_name)
+              ? removeFavorite(flight_number)
+              : addFavorite(flight_number, mission_name)
           }
         />
       </Box>
-      <Link to={`/launches/${launch.flight_number.toString()}`}>
+      <Link to={`/launches/${flight_number.toString()}`}>
         <Box px="6" pb="6">
           <Box d="flex" alignItems="baseline">
-            {launch.launch_success ? (
+            {launch_success ? (
               <Badge px="2" variant="solid" variantColor="green">
                 Successful
               </Badge>
@@ -81,7 +89,7 @@ const LaunchCard = ({ launch }) => {
               textTransform="uppercase"
               ml="2"
             >
-              {launch.rocket.rocket_name} &bull; {launch.launch_site.site_name}
+              {rocket.rocket_name} &bull; {launch_site.site_name}
             </Box>
           </Box>
 
@@ -92,12 +100,12 @@ const LaunchCard = ({ launch }) => {
             lineHeight="tight"
             isTruncated
           >
-            {launch.mission_name}
+            {mission_name}
           </Box>
           <Flex>
-            <Text fontSize="sm">{formatDate(launch.launch_date_utc)} </Text>
+            <Text fontSize="sm">{formatDate(launch_date_utc)} </Text>
             <Text color="gray.500" ml="2" fontSize="sm">
-              {timeAgo(launch.launch_date_utc)}
+              {timeAgo(launch_date_utc)}
             </Text>
           </Flex>
         </Box>

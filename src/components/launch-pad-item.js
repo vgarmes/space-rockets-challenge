@@ -5,13 +5,21 @@ import { Link } from 'react-router-dom';
 import { useFavoritesContext } from '../context/favorites_context';
 import { isFavorite } from '../utils';
 
-const LaunchPadItem = ({ launchPad }) => {
+const LaunchPadItem = ({
+  site_id,
+  site_name_long,
+  status,
+  attempted_launches,
+  successful_launches,
+  name,
+  vehicles_launched,
+}) => {
   const {
     favorites: { launch_pads },
     addFavoriteLaunchPad: addFavorite,
     removeFavoriteLaunchPad: removeFavorite,
   } = useFavoritesContext();
-  const isPadFavorite = isFavorite(launch_pads, launchPad.site_id);
+  const isPadFavorite = isFavorite(launch_pads, site_id);
   return (
     <Box
       boxShadow="md"
@@ -31,15 +39,15 @@ const LaunchPadItem = ({ launchPad }) => {
           aria-label="add to favorites"
           onClick={() =>
             isPadFavorite
-              ? removeFavorite(launchPad.site_id)
-              : addFavorite(launchPad.site_id, launchPad.site_name_long)
+              ? removeFavorite(site_id)
+              : addFavorite(site_id, site_name_long)
           }
         />
       </Box>
-      <Link to={`/launch-pads/${launchPad.site_id}`}>
+      <Link to={`/launch-pads/${site_id}`}>
         <Box px="6" pb="6">
           <Box d="flex" alignItems="baseline">
-            {launchPad.status === 'active' ? (
+            {status === 'active' ? (
               <Badge px="2" variant="solid" variantColor="green">
                 Active
               </Badge>
@@ -56,8 +64,8 @@ const LaunchPadItem = ({ launchPad }) => {
               textTransform="uppercase"
               ml="2"
             >
-              {launchPad.attempted_launches} attempted &bull;{' '}
-              {launchPad.successful_launches} succeeded
+              {attempted_launches} attempted &bull; {successful_launches}{' '}
+              succeeded
             </Box>
           </Box>
 
@@ -68,10 +76,10 @@ const LaunchPadItem = ({ launchPad }) => {
             lineHeight="tight"
             isTruncated
           >
-            {launchPad.name}
+            {name}
           </Box>
           <Text color="gray.500" fontSize="sm">
-            {launchPad.vehicles_launched.join(', ')}
+            {vehicles_launched.join(', ')}
           </Text>
         </Box>
       </Link>
