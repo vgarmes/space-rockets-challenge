@@ -2,9 +2,16 @@
 
 # ¡Space·Rockets! app
 
-### [👉 Go to the challenge 👈](./CHALLENGE.md)
+### [🚀 See the NEW app in action 🚀](https://new-space-rockets.netlify.app)
 
-### [🚀 See the app in action 🚀](https://spacerockets.netlify.app)
+## New features and fixes
+
+- Launch date is displayed in local time. A tooltip shows the launch date in user's time.
+- Favorites: user can add launches and launch pads to a favorite list. The list is stored locally.
+- Filter: user can filter launches by launch success, date range and launch site.
+- Grid/List view: user can toggle betwen a grid view and a list view on the launches list.
+- Sort: user can sort the launches list by mission name, launch date, launch site and rocket name.
+- Animations: the list of Launch and launch pad items is displayed with a fade animation on user scroll.
 
 ## Develop
 
@@ -23,6 +30,10 @@
 - run `yarn build` to build app for production
 - output is in `build` directory,
   [ready to be deployed](https://create-react-app.dev/docs/deployment/)
+
+## Test
+
+- run `yarn test`to test app
 
 ## Data
 
@@ -44,5 +55,14 @@ All data is fetched from the unofficial SpaceX API V3 at
   routing library
 - [React Feathers](https://github.com/feathericons/react-feather) - Icons
   ([Feather icons](https://feathericons.com/) wrapper for React)
+- [React Icons](https://react-icons.github.io/react-icons/) - More icons
 - [timeago.js](https://timeago.org/) - Tiny library to display human-readable
   relative time difference
+- [luxon](https://moment.github.io/luxon) - Wrapper for JavaScript dates and times
+- [React Reveal](https://www.react-reveal.com/) - Animation framework
+
+## Dev dependencies
+
+- [Testing Library](https://testing-library.com/) - Testing utilities
+- [React Test Renderer](https://reactjs.org/docs/test-renderer.html) - React renderer used for snapshotting during tests with Jest
+- [Snapshot Diff](https://github.com/jest-community/snapshot-diff) - Jest utility that takes two snapshots and returns the difference
