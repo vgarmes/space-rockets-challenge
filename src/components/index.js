@@ -10,6 +10,8 @@ import Filter from './filter';
 import Sort from './sort';
 import LoadMoreButton from './load-more-button';
 import LaunchListItem from './launch-list-item';
+import GridView from './GridView';
+import ListView from './ListView';
 export {
   Layout,
   Navbar,
@@ -23,4 +25,6 @@ export {
   LoadMoreButton,
   Sort,
   LaunchListItem,
+  GridView,
+  ListView,
 };
