@@ -10,6 +10,7 @@ import LoadMoreButton from './load-more-button';
 import LaunchListItem from './launch-list-item';
 import GridView from './GridView';
 import ListView from './ListView';
+import LaunchPadItem from './launch-pad-item';
 export {
   Layout,
   Navbar,
@@ -23,4 +24,5 @@ export {
   LaunchListItem,
   GridView,
   ListView,
+  LaunchPadItem,
 };
